@@ -10,12 +10,28 @@
 
 @implementation Argorithm_001
 
-#pragma mark -
+#pragma mark - 反转字符串
 - (void)testReverseChar {
     
     char a[] = "123456789";
     char_reverse(a);
-    NSLog(@"reverse result:%s",a);
+    printf("reverse result:%s \n",a);
+}
+
+#pragma mark - 有序数组归并
+- (void)testMergeSortedList {
+    int a[4] = {1,3,8,9};
+    int b[7] = {2,5,7,10,12,23,245};
+    
+    int result[13];
+    
+    mergeSortedList(a, 4, b, 7, result);
+    
+    printf("merge result: \n");
+    for (int i = 0; i < 11; i++) {
+        int c = result[i];
+        printf("%d \n",c);
+    }
 }
 
 #pragma mark - Private
@@ -32,9 +48,43 @@ void char_reverse(char *cha) {
         *end = temp;
         
         //begin指针往后移动一位
-        //end指针忘前移动一位
+        //end指针往前移动一位
         begin ++;
         end --;
+    }
+}
+
+void mergeSortedList(int a[], int aLength, int b[], int bLength, int result[]) {
+    /**
+     *  x:遍历数组a的指针
+     *  y:遍历数组b的指针
+     *  i:记录归并数组当前存储位置
+     */
+    int x = 0;
+    int y = 0;
+    int i = 0;
+    
+    while (x < aLength && y < bLength) {
+        if (a[x] < b[y]) {
+            result[i] = a[x];
+            x++;
+        } else {
+            result[i] = b[y];
+            y++;
+        }
+        i++;
+    }
+    
+    while (x < aLength) {
+        result[i] = a[x];
+        x++;
+        i++;
+    }
+    
+    while (y < bLength) {
+        result[i] = b[y];
+        y++;
+        i++;
     }
 }
 
