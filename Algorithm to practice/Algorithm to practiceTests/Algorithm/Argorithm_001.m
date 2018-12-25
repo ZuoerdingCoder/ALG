@@ -10,7 +10,7 @@
 
 @implementation Argorithm_001
 
-#pragma mark - 反转字符串
+#pragma mark - 一、反转字符串
 - (void)testReverseChar {
     
     char a[] = "123456789";
@@ -18,7 +18,7 @@
     printf("reverse result:%s \n",a);
 }
 
-#pragma mark - 有序数组归并
+#pragma mark - 二、有序数组归并
 - (void)testMergeSortedList {
     int a[4] = {1,3,8,9};
     int b[7] = {2,5,7,10,12,23,245};
@@ -34,12 +34,31 @@
     }
 }
 
-#pragma mark - 在一个字符串中找到第一个只出现一次的字符
+#pragma mark - 三、在一个字符串中找到第一个只出现一次的字符
 - (void)testFindFirstChar {
     
     char a[] = "saegasdgp'kgasgk mpah";
     char result = findFirstChar(a);
     printf("result:%c \n",result);
+}
+
+#pragma mark - 四、幼畜数组二分查找
+- (void)testBinarySearch {
+    int a[7] = {2,5,7,10,12,23,245};
+    int index = binarySearch(a,23,7);
+    printf("index:%d \n",index);
+}
+
+
+#pragma mark - 五、选择排序
+- (void)testSelectSort {
+    
+    int a[13] = {12,235,17,101,12,23,2435,2,4,890,234,25,23513};
+    int *b = selectSort(a, 13);
+    printf("select sort result: \n");
+    for (int i = 0; i<13; i++) {
+        printf("%d \n",b[i]);
+    }
 }
 
 #pragma mark - Private
@@ -137,5 +156,88 @@ char findFirstChar(char *cha) {
     
     return result;
 }
+
+int binarySearch(int list[],int item,int len) {
+    
+    //二分查找
+    //通过每次限定低位与高位的边界，然后求取中间位的值与item对比,如果不相等，重新设定高位与低位的值,来逐渐缩小item的范围，直至找到它
+    
+    //初始化低位下标
+    int low = 0;
+    
+    //初始化高位下标
+    int high = len-1;
+    
+    //循环停止条件就是高位值大于低位值时
+    while (low <= high) {
+        
+        //计算此时的中位下标
+        int mid = (low + high)/2;
+        
+        //本次查找到的值
+        int currentItem = list[mid];
+        
+        //找到了
+        if (currentItem == item) {
+            return mid;
+            
+        //小了
+        } else if (currentItem < item) {
+            //重置low的值，用于重新计算中位值
+            low = mid+1;
+        //大了
+        } else {
+            //重置high的值，用于重新计算中位值
+            high = mid-1;
+        }
+    }
+    
+    //返回-1表示在该数组中未找到item
+    return -1;
+}
+
+int *selectSort(int a[],int len) {
+    
+    //选择排序
+    //每次从数组中,通过逐一对比查找出当时最小的值，放入到新的容器数组,然后修改这个最小的值为INT_MAX
+    
+    //初始化一个用于存放排序后数据的数组
+    int *sortedArr = (int *)malloc(sizeof(int)*len);
+    
+    //使用len,每次都从原数组中查找最小的值，然后将这个值置为INT_MAX
+    for (int i = 0; i<len; i++) {
+        
+        int smallIndex = findSmallest(a, len);
+        int smallValue = a[smallIndex];
+        
+        sortedArr[i] = smallValue;
+        
+        a[smallIndex] = INT_MAX;
+    }
+    
+    return sortedArr;
+}
+
+
+int findSmallest(int *arr,int len) {
+    
+    //记录最小值的下标
+    int index = 0;
+    
+    //记录最小值
+    int smallValue = arr[0];
+    
+    //从i为1时，开始与smallValue对比，如果比它小，则将该值重新赋给smallValue
+    for (int i = 1; i<len; i++) {
+        int item = arr[i];
+        if (item < smallValue) {
+            smallValue = item;
+            index = i;
+        }
+    }
+    
+    return index;
+}
+
 
 @end
