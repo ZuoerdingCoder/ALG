@@ -32,6 +32,51 @@ typedef struct Node {
 }
 
 
+#pragma mark - 二、检测单链表是否有环
+- (void)testSinglyLinkedNotHasCircle {
+    
+    Node *head = NULL;
+    insertNode(&head, 8);
+    insertNode(&head, 7);
+    insertNode(&head, 6);
+    insertNode(&head, 5);
+    insertNode(&head, 4);
+    insertNode(&head, 3);
+
+    BOOL hasCircle1 = hasCircle(&head);
+    if (hasCircle1) {
+        printf("这是个有环链表 \n");
+    } else {
+        printf("这是个无环链表 \n");
+    }
+    
+    //拼凑一个有环链表
+    Node *current = malloc(sizeof(Node));
+    current->data = 0;
+    
+    Node *h = current;
+    
+    for (int i = 1; i<4; i++) {
+        Node *node = malloc(sizeof(node));
+        node->data = i;
+        current->next = node;
+        current = node;//不要漏写这一步
+    }
+    
+    current->next = h;
+    
+    BOOL hasCircle2 = hasCircle(&h);
+    if (hasCircle2) {
+        printf("这是个有环链表 \n");
+    } else {
+        printf("这是个无环链表 \n");
+    }
+    
+    printLinkedList(h);
+        
+}
+
+
 #pragma mark - Private
 void reverse(Node **head_ref) {
     
@@ -56,6 +101,29 @@ void reverse(Node **head_ref) {
         prev = current;
         current = next;
     }
+}
+
+
+bool hasCircle(Node **head_ref) {
+    
+    //判断是否是空链表
+    if (*head_ref == NULL) {
+        return NO;
+    }
+    
+    //初始化2个指针，slow指针每次走一步，fast指针每次走两步，如果在slow指针走到尾部时，slow与fast有相交，则说明有环
+    Node *slow = *head_ref;
+    Node *fast = *head_ref;
+    
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 
