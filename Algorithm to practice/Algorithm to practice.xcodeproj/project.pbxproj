@@ -16,6 +16,7 @@
 		1837EEF221D0B2EE000AF9FB /* Algorithm_to_practiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837EEF121D0B2EE000AF9FB /* Algorithm_to_practiceTests.m */; };
 		1837EEFD21D0B2EE000AF9FB /* Algorithm_to_practiceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837EEFC21D0B2EE000AF9FB /* Algorithm_to_practiceUITests.m */; };
 		1837EF0D21D0B4F0000AF9FB /* Argorithm_001.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837EF0C21D0B4F0000AF9FB /* Argorithm_001.m */; };
+		1837EF1321D32642000AF9FB /* Argorithm_002.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837EF1221D32642000AF9FB /* Argorithm_002.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		1837EEFE21D0B2EE000AF9FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1837EF0B21D0B4F0000AF9FB /* Argorithm_001.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Argorithm_001.h; sourceTree = "<group>"; };
 		1837EF0C21D0B4F0000AF9FB /* Argorithm_001.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Argorithm_001.m; sourceTree = "<group>"; };
+		1837EF1121D32642000AF9FB /* Argorithm_002.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Argorithm_002.h; sourceTree = "<group>"; };
+		1837EF1221D32642000AF9FB /* Argorithm_002.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Argorithm_002.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 			children = (
 				1837EF0B21D0B4F0000AF9FB /* Argorithm_001.h */,
 				1837EF0C21D0B4F0000AF9FB /* Argorithm_001.m */,
+				1837EF1121D32642000AF9FB /* Argorithm_002.h */,
+				1837EF1221D32642000AF9FB /* Argorithm_002.m */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1837EEF221D0B2EE000AF9FB /* Algorithm_to_practiceTests.m in Sources */,
+				1837EF1321D32642000AF9FB /* Argorithm_002.m in Sources */,
 				1837EF0D21D0B4F0000AF9FB /* Argorithm_001.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
